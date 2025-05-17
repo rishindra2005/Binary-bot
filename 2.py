@@ -24,7 +24,6 @@ load_env()
 IQ_EMAIL = get_env('IQ_EMAIL')
 IQ_PASSWORD = get_env('IQ_PASSWORD')
 
-#I_want_money = IQ_Option("bashokauto@outlook.com", "Qwertyuiop@1234")
 I_want_money = IQ_Option(IQ_EMAIL, IQ_PASSWORD)
 I_want_money.connect()  # connect to iqoption
 goal = "EURJPY" #ASSET

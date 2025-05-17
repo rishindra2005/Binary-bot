@@ -16,7 +16,6 @@ warnings.warn = warn
 warnings.filterwarnings("ignore", category=FutureWarning)
 from iqoptionapi.stable_api import IQ_Option
 from load_env import load_env, get_env
-#API = IQ_Option("bashokauto@outlook.com","Qwertyuiop@1234")
 etime=time.time()
 
 ## EDITABLE
@@ -29,7 +28,6 @@ load_env()
 IQ_EMAIL = get_env('IQ_EMAIL')
 IQ_PASSWORD = get_env('IQ_PASSWORD')
 
-# I_want_money = IQ_Option("bashokauto@outlook.com", "Qwertyuiop@1234")
 I_want_money = IQ_Option(IQ_EMAIL, IQ_PASSWORD)
 I_want_money.connect()  # connect to iqoption
 goal = "EURUSD" #ASSET

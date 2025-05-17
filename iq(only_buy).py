@@ -1,5 +1,4 @@
 from iqoptionapi.stable_api import IQ_Option
-#API = IQ_Option("bashokauto@outlook.com","Qwertyuiop@1234")
 from iqoptionapi.stable_api import IQ_Option
 from datetime import datetime
 import os
