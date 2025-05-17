@@ -8,6 +8,8 @@ import time
 import joblib
 import warnings
 from sklearn.ensemble import RandomForestClassifier
+import os
+from load_env import load_env, get_env
  
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 def warn(*args, **kwargs):
@@ -21,9 +23,15 @@ etime=time.time()
 
 ## EDITABLE
 
+# Load environment variables from .env file
+load_env()
 
-#I_want_money = IQ_Option("bashokauto@outlook.com", "Qwertyuiop@1234")
-I_want_money = IQ_Option("bashok2005@outlook.com", "Qwertyuiop@1234")
+# Get credentials from environment variables
+IQ_EMAIL = get_env('IQ_EMAIL')
+IQ_PASSWORD = get_env('IQ_PASSWORD')
+
+# Initialize IQ_Option with credentials from environment variables
+I_want_money = IQ_Option(IQ_EMAIL, IQ_PASSWORD)
 I_want_money.connect()  # connect to iqoption
 goal = ["EURUSD","USDJPY","EURJPY"] #ASSET
 time_frame = 60 # pred only for 60

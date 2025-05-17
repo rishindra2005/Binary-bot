@@ -12,11 +12,18 @@ import time
 import joblib
 import warnings
 from sklearn.ensemble import RandomForestClassifier
- 
+import pathlib
+import os
+from load_env import load_env, get_env
+
 warnings.filterwarnings("ignore", category=DeprecationWarning)
+
+# Load environment variables
+load_env()
+
 def warn(*args, **kwargs):
     pass
-import warnings
+
 warnings.warn = warn
 warnings.filterwarnings("ignore", category=FutureWarning)
 from iqoptionapi.stable_api import IQ_Option
@@ -347,16 +354,17 @@ def stop():
 frame1 = tk.Frame(None)
 frame2 = tk.Frame(frame1)
 email = tk.Entry(frame2)
-bash = tk.StringVar(value='bashok2005@outlook.com')
+# Use environment variable for default email value
+bash = tk.StringVar(value=get_env('IQ_EMAIL', 'your_email@example.com'))
 email.configure(font='TkTextFont', justify='left', relief='raised', takefocus=False)
 email.configure(textvariable=bash, width='30')
-_text_ = '''bashok2005@outlook.com'''
+_text_ = get_env('IQ_EMAIL', 'your_email@example.com')
 email.delete('0', 'end')
 email.insert('0', _text_)
 email.pack(padx='5', pady='18', side='top')
 pasword = tk.Entry(frame2)
 pasword.configure(show='•')
-_text_ = '''Asdfghjkl_1234'''
+_text_ = get_env('IQ_PASSWORD', 'your_password')
 pasword.delete('0', 'end')
 pasword.insert('0', _text_)
 pasword.pack(padx='5', side='left')
